@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Love ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  text-align: center;
+  background: linear-gradient(135deg, #ffe0eb, #e8d8ff);
+  color: #673653;
+  padding: 40px 15px;
+}
+.card {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 35px 20px;
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0 8px 30px #0002;
+}
+h1 { font-size: 38px; }
+p { font-size: 18px; line-height: 1.7; }
+button {
+  background: #d65b91;
+  color: white;
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 25px;
+  font-size: 17px;
+  cursor: pointer;
+}
+#surprise { display: none; }
+.heart { font-size: 50px; }
+</style>
+</head>
+
+<body>
+<div class="card">
+  <div class="heart">💗 🎂 💗</div>
+
+  <h1>Happy Birthday, My Love!</h1>
+
+  <p>
+    Today is all about celebrating the most
+    special person in my life.
+  </p>
+
+  <button onclick="openSurprise()">
+    Click for your surprise 🎁
+  </button>
+
+  <div id="surprise">
+    <h2>Surprise! ❤️</h2>
+    <p>
+      You make ordinary days extraordinary.
+      Thank you for being you.
+      Here's to many more beautiful memories together!
+    </p>
+    <div class="heart">🥰 💕 🥰</div>
+  </div>
+</div>
+
+<script>
+function openSurprise() {
+  document.getElementById("surprise").style.display = "block";
+}
+</script>
+</body>
+</html>
