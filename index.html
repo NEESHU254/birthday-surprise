@@ -4,352 +4,515 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Subbu | A Special Celebration</title>
+<title>Subbu's Birthday Surprise 🎂</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing:border-box; }
 
 body {
-  background: #080808;
-  color: #f5e5b8;
-  font-family: Georgia, serif;
-  text-align: center;
-  overflow-x: hidden;
-}
-
-.gold {
-  color: #d9b45b;
-}
-
-.container {
-  min-height: 100vh;
-  padding: 35px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-}
-
-.glow {
-  position: fixed;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  background: #d6a638;
-  filter: blur(150px);
-  opacity: 0.10;
-  top: 25%;
-  left: 30%;
-  pointer-events: none;
-}
-
-.small-title {
-  letter-spacing: 6px;
-  font-size: 11px;
-  color: #d9b45b;
-  margin-bottom: 25px;
-}
-
-h1 {
-  font-size: clamp(42px, 9vw, 75px);
-  color: #e4c36d;
-  font-weight: normal;
-  margin-bottom: 15px;
-}
-
-.subtitle {
-  color: #bcb4a1;
-  letter-spacing: 2px;
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-.line {
-  width: 100px;
-  height: 1px;
-  background: #c9a64d;
-  margin: 30px auto;
-}
-
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 30px 0;
-  flex-wrap: wrap;
-}
-
-.time-box {
-  border: 1px solid #8f7135;
-  padding: 18px 15px;
-  min-width: 75px;
-  border-radius: 8px;
-  background: #14110a;
-}
-
-.time-box span {
-  display: block;
-  font-size: 28px;
-  color: #e4c36d;
-}
-
-.time-box small {
-  color: #aaa08c;
-  font-size: 10px;
-  letter-spacing: 2px;
+  margin:0;
+  font-family:'Trebuchet MS',sans-serif;
+  background:#fff4d6;
+  color:#603d35;
+  text-align:center;
+  overflow-x:hidden;
 }
 
 button {
-  border: 1px solid #d9b45b;
-  background: linear-gradient(135deg,#d8b65f,#997329);
-  color: #100e09;
-  padding: 16px 32px;
-  border-radius: 3px;
-  letter-spacing: 2px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 25px;
-  transition: 0.3s;
+  border:0;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:17px;
+  border-radius:35px;
+  padding:15px 28px;
+  transition:transform .2s;
 }
 
-button:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 25px #d9b45b66;
+button:hover { transform:scale(1.06); }
+
+.screen {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:30px 18px;
+  position:relative;
+  overflow:hidden;
 }
 
-#surprise {
-  display: none;
-  animation: reveal 1.5s ease;
-  max-width: 650px;
-  padding: 25px 10px;
+.hidden { display:none !important; }
+
+h1 {
+  font-size:clamp(35px,8vw,62px);
+  color:#e94f38;
+  margin:12px 0;
 }
 
-@keyframes reveal {
-  from {opacity:0; transform:translateY(30px);}
-  to {opacity:1; transform:translateY(0);}
+h2 { color:#e94f38; }
+
+p {
+  line-height:1.7;
+  font-size:17px;
+}
+
+.mascot {
+  width:min(230px,65vw);
+  height:200px;
+  object-fit:contain;
+  margin:10px auto;
+}
+
+.emoji-mascot {
+  font-size:100px;
+  margin:15px;
+}
+
+.tag {
+  color:#e94f38;
+  font-weight:bold;
+  letter-spacing:3px;
+  font-size:12px;
+}
+
+.card {
+  background:white;
+  border:3px solid #ffd36a;
+  border-radius:28px;
+  padding:30px 22px;
+  width:min(650px,95%);
+  box-shadow:0 12px 30px #b7774230;
+  position:relative;
+  z-index:2;
+}
+
+.yes {
+  background:#24a66b;
+  color:white;
+}
+
+.no {
+  background:#ef6470;
+  color:white;
+  position:relative;
+}
+
+.buttons {
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-top:20px;
+  min-height:65px;
+  align-items:center;
+}
+
+.decoration {
+  position:absolute;
+  font-size:30px;
+  animation:float 4s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes float {
+  0%,100% { transform:translateY(0) rotate(-8deg); }
+  50% { transform:translateY(-20px) rotate(8deg); }
+}
+
+#countdownScreen {
+  background:linear-gradient(160deg,#dff5ff,#fff3c4);
+}
+
+.timer {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin:25px 0;
+}
+
+.time {
+  background:white;
+  padding:17px 12px;
+  border-radius:17px;
+  min-width:75px;
+  box-shadow:0 5px 15px #6594a522;
+}
+
+.time strong {
+  display:block;
+  color:#e94f38;
+  font-size:30px;
+}
+
+.time small {
+  color:#55758b;
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+.reveal-btn {
+  background:#ffb82e;
+  color:#673c17;
+  margin-top:15px;
+}
+
+#birthdayScreen {
+  background:linear-gradient(135deg,#ffdee9,#fff2b8,#d9f3ff);
+}
+
+.birthday-card {
+  background:#ffffffed;
+  border-radius:30px;
+  max-width:680px;
+  padding:35px 23px;
+  box-shadow:0 12px 35px #a65e5830;
+  z-index:2;
 }
 
 .message {
-  color: #d8cfba;
-  font-size: 18px;
-  line-height: 2;
-  margin: 25px 0;
+  color:#72464c;
+  font-size:18px;
+  line-height:1.9;
+  margin:20px 0;
 }
 
-.signature {
-  font-style: italic;
-  color: #d9b45b;
-  font-size: 20px;
-  margin-top: 25px;
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:20px;
 }
 
-.ornament {
-  color: #d9b45b;
-  font-size: 35px;
-  margin: 20px;
+.gallery img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:16px;
 }
 
 #confetti {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 10;
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
 }
 
 footer {
-  color: #77705f;
-  font-size: 11px;
-  letter-spacing: 2px;
-  margin-top: 50px;
+  font-size:12px;
+  color:#9a7566;
+  margin-top:25px;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="glow"></div>
 <canvas id="confetti"></canvas>
 
-<section class="container" id="opening">
+<!-- OPENING SCREEN -->
 
-  <div class="small-title">
-    AN EXCLUSIVE CELEBRATION
+<section class="screen" id="opening">
+
+  <div class="decoration" style="top:8%;left:8%">🎈</div>
+  <div class="decoration" style="top:15%;right:9%">⭐</div>
+  <div class="decoration" style="bottom:12%;left:12%">🎉</div>
+  <div class="decoration" style="bottom:10%;right:10%">🎁</div>
+
+  <div class="card">
+
+    <div class="tag">ATTENTION PLEASE!!!</div>
+
+    <!-- Add your Shinchan image as shinchan.png -->
+    <img src="shinchan.png"
+         class="mascot"
+         alt="Shinchan"
+         onerror="this.style.display='none';
+         document.getElementById('fallback').style.display='block';">
+
+    <div id="fallback" class="emoji-mascot" style="display:none">
+      😎
+    </div>
+
+    <h1>HEY SUBBU!!!</h1>
+
+    <p style="font-size:21px;font-weight:bold">
+      Would you like to receive a SUPER SPECIAL surprise? 🎁
+    </p>
+
+    <p>Think carefully... this is a very important decision! 😂</p>
+
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">
+        YESSS! ❤️
+      </button>
+
+      <button class="no" id="noButton"
+        onmouseover="runAway()"
+        onclick="runAway()"
+        ontouchstart="runAway()">
+        NO 🙄
+      </button>
+    </div>
+
+    <p id="tease" style="color:#e94f38;font-size:14px">
+      Psst... the NO button is a little shy!
+    </p>
+
   </div>
 
-  <div class="ornament">✧</div>
+  <footer>CREATED WITH LOVE, JUST FOR SUBBU ❤️</footer>
+</section>
 
-  <h1>Dear Subbu</h1>
 
-  <p class="subtitle">
-    Some people make life extraordinary.<br>
-    Today, we celebrate one of them.
-  </p>
+<!-- COUNTDOWN SCREEN -->
 
-  <div class="line"></div>
+<section class="screen hidden" id="countdownScreen">
 
-  <p class="gold">A SPECIAL DAY DESERVES A SPECIAL SURPRISE</p>
+  <div class="decoration" style="top:8%;left:8%">🎈</div>
+  <div class="decoration" style="top:20%;right:8%">🎊</div>
+  <div class="decoration" style="bottom:10%;left:10%">🎂</div>
 
-  <div class="countdown">
-    <div class="time-box">
-      <span id="days">00</span>
-      <small>DAYS</small>
+  <div class="card">
+
+    <div class="tag">YOU HAVE MADE THE RIGHT CHOICE!</div>
+
+    <div class="emoji-mascot">🥳</div>
+
+    <h1>YAYYYY SUBBU!</h1>
+
+    <h2>Something EPIC is coming!</h2>
+
+    <p>
+      The birthday celebrations are almost here.
+      Get ready for a little madness, laughter and lots of love!
+    </p>
+
+    <div class="tag">COUNTDOWN TO YOUR BIG DAY</div>
+
+    <h2>05 DECEMBER 2026 🎂</h2>
+
+    <div class="timer">
+      <div class="time">
+        <strong id="days">00</strong>
+        <small>DAYS</small>
+      </div>
+
+      <div class="time">
+        <strong id="hours">00</strong>
+        <small>HOURS</small>
+      </div>
+
+      <div class="time">
+        <strong id="minutes">00</strong>
+        <small>MINUTES</small>
+      </div>
+
+      <div class="time">
+        <strong id="seconds">00</strong>
+        <small>SECONDS</small>
+      </div>
     </div>
-    <div class="time-box">
-      <span id="hours">00</span>
-      <small>HOURS</small>
-    </div>
-    <div class="time-box">
-      <span id="minutes">00</span>
-      <small>MINUTES</small>
-    </div>
-    <div class="time-box">
-      <span id="seconds">00</span>
-      <small>SECONDS</small>
-    </div>
+
+    <p id="countdownMessage">
+      Every second brings us closer to your special day! ❤️
+    </p>
+
+    <button class="reveal-btn" onclick="openBirthday()">
+      OKAY, SHOW ME THE SURPRISE! 🎁
+    </button>
+
   </div>
-
-  <p class="subtitle">
-    The countdown to a little happiness begins...
-  </p>
-
-  <button onclick="revealSurprise()">
-    REVEAL YOUR SURPRISE ✨
-  </button>
-
-  <footer>
-    MADE WITH LOVE • JUST FOR YOU
-  </footer>
 
 </section>
 
-<section class="container" id="surprise">
 
-  <div class="ornament">✦ ✦ ✦</div>
+<!-- BIRTHDAY SURPRISE SCREEN -->
 
-  <p class="small-title">TODAY IS YOUR DAY</p>
+<section class="screen hidden" id="birthdayScreen">
 
-  <h1>Happy Birthday,<br>Subbu!</h1>
+  <div class="decoration" style="top:5%;left:7%">🎈</div>
+  <div class="decoration" style="top:15%;right:8%">🎉</div>
+  <div class="decoration" style="bottom:10%;left:8%">🎁</div>
+  <div class="decoration" style="bottom:8%;right:8%">⭐</div>
 
-  <div class="line"></div>
+  <div class="birthday-card">
 
-  <p class="message">
-    Some people are gifts in themselves.<br>
-    And you, Subbu, are one of those rare people.<br><br>
+    <div class="tag">THE DAY HAS FINALLY ARRIVED!</div>
 
-    May your life be filled with endless happiness,
-    beautiful memories, exciting adventures and
-    all the little things that make you smile.<br><br>
+    <div class="emoji-mascot">🎂🥳🎊</div>
 
-    May every dream you hold close find its way
-    to becoming a beautiful reality.<br><br>
+    <h1>HAPPY BIRTHDAY!</h1>
 
-    Here's to another year of laughter, love,
-    unforgettable moments and wonderful surprises.
-  </p>
+    <h1 style="font-size:55px">SUBBU ❤️</h1>
 
-  <div class="ornament">❦</div>
+    <p class="message">
+      Dear Subbu,<br><br>
 
-  <h2 class="gold">You deserve the very best!</h2>
+      Another year older, another year wiser...
+      although we're still waiting for the wiser part! 😂<br><br>
 
-  <p class="signature">
-    With lots of love ❤️
-  </p>
+      May your life always be filled with laughter,
+      adventures, happiness and countless reasons to smile.<br><br>
 
-  <button onclick="celebrate()">
-    ONE MORE SURPRISE 🎉
-  </button>
+      May all your dreams come true and may you
+      always have the courage to chase the biggest ones.<br><br>
 
-  <footer>
-    THE WORLD IS BETTER WITH YOU IN IT
-  </footer>
+      Keep being your crazy, wonderful self.
+      The world is a much happier place with you in it! ❤️
+    </p>
+
+    <div class="emoji-mascot">🎈🎂🎁</div>
+
+    <h2>YOU ARE ONE OF A KIND!</h2>
+
+    <p>Sending you the biggest birthday hug! 🤗</p>
+
+    <!-- OPTIONAL PHOTO GALLERY -->
+    <!-- Add photos later as photo1.jpg, photo2.jpg etc. -->
+
+    <footer>
+      MADE WITH A LOT OF LOVE ❤️
+    </footer>
+
+  </div>
 
 </section>
+
 
 <script>
 
-// Countdown currently counts from the moment
-// the website is opened. Set a birthday date later.
+// BIRTHDAY: 5 DECEMBER 2026
+// Indian Standard Time: UTC +5:30
 
-const targetDate = new Date();
-targetDate.setDate(targetDate.getDate() + 1);
+const birthday = new Date("2026-12-05T00:00:00+05:30");
+
+function runAway() {
+  const button = document.getElementById("noButton");
+  const area = document.querySelector("#opening .card");
+
+  const rect = area.getBoundingClientRect();
+
+  const maxX = Math.max(0, rect.width - button.offsetWidth - 25);
+  const maxY = 150;
+
+  button.style.position = "relative";
+  button.style.left = (Math.random() * maxX - maxX/2) + "px";
+  button.style.top = (Math.random() * maxY - maxY/2) + "px";
+
+  document.getElementById("tease").textContent =
+    "HAHA! Nice try! 😂 You have to say YES!";
+}
+
+function sayYes() {
+  document.getElementById("opening").classList.add("hidden");
+  document.getElementById("countdownScreen").classList.remove("hidden");
+  updateCountdown();
+}
 
 function updateCountdown() {
-  const now = new Date();
-  let difference = targetDate - now;
 
-  if (difference < 0) difference = 0;
+  const now = new Date();
+  const diff = birthday - now;
+
+  if (diff <= 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+
+    document.getElementById("countdownMessage").textContent =
+      "IT'S YOUR BIRTHDAY! THE WAIT IS OVER! 🎉";
+
+    return;
+  }
 
   document.getElementById("days").textContent =
-    Math.floor(difference / 86400000);
+    Math.floor(diff / 86400000);
 
   document.getElementById("hours").textContent =
-    Math.floor((difference % 86400000) / 3600000);
+    Math.floor((diff % 86400000) / 3600000);
 
   document.getElementById("minutes").textContent =
-    Math.floor((difference % 3600000) / 60000);
+    Math.floor((diff % 3600000) / 60000);
 
   document.getElementById("seconds").textContent =
-    Math.floor((difference % 60000) / 1000);
+    Math.floor((diff % 60000) / 1000);
 }
 
 setInterval(updateCountdown, 1000);
-updateCountdown();
 
-function revealSurprise() {
-  document.getElementById("opening").style.display = "none";
-  document.getElementById("surprise").style.display = "flex";
+function openBirthday() {
+  document.getElementById("countdownScreen").classList.add("hidden");
+  document.getElementById("birthdayScreen").classList.remove("hidden");
   celebrate();
 }
 
+// GOLDEN AND COLOURFUL CONFETTI
+
 function celebrate() {
+
   const canvas = document.getElementById("confetti");
   const ctx = canvas.getContext("2d");
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  const colours = [
+    "#ff4e72", "#ffd447", "#43b8ed",
+    "#65c98b", "#ff8c42", "#b77bea"
+  ];
+
   const pieces = [];
 
-  for(let i = 0; i < 150; i++) {
+  for(let i=0;i<180;i++) {
     pieces.push({
-      x: Math.random() * canvas.width,
-      y: -20 - Math.random() * canvas.height,
-      size: Math.random() * 6 + 3,
-      speed: Math.random() * 4 + 2,
-      color: ["#d9b45b","#fff0b5","#b38b36"][Math.floor(Math.random()*3)]
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height-canvas.height,
+      size:Math.random()*8+3,
+      speed:Math.random()*4+2,
+      colour:colours[Math.floor(Math.random()*colours.length)],
+      rotation:Math.random()*360
     });
   }
 
-  let frame = 0;
+  let frame=0;
 
   function draw() {
+
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    pieces.forEach(p => {
-      ctx.fillStyle = p.color;
-      ctx.fillRect(p.x,p.y,p.size,p.size);
-      p.y += p.speed;
-      p.x += Math.sin(frame/15 + p.y/30);
+    pieces.forEach(p=>{
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rotation*Math.PI/180);
+      ctx.fillStyle=p.colour;
+      ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
+      ctx.restore();
+
+      p.y+=p.speed;
+      p.x+=Math.sin(frame/20+p.y/40);
+      p.rotation+=3;
+
+      if(p.y>canvas.height) p.y=-10;
     });
 
     frame++;
 
-    if(frame < 180) requestAnimationFrame(draw);
+    if(frame<300) requestAnimationFrame(draw);
     else ctx.clearRect(0,0,canvas.width,canvas.height);
   }
 
   draw();
 }
 
-window.addEventListener("resize", () => {
-  const canvas = document.getElementById("confetti");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+window.addEventListener("resize",()=>{
+  const canvas=document.getElementById("confetti");
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
 });
 
 </script>
